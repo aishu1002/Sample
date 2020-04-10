@@ -60,7 +60,8 @@ def upload_photo():
     #entity['image_public_url'] = blob.public_url
     #entity['question'] = name
     for i in range(len(blockList)):
-        entity[i]=blockList[i]
+        n=str(i)
+        entity[n]=blockList[i]
 
     entity['timestamp'] = current_datetime
     #entity['joy'] = face_joy
