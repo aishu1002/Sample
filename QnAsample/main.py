@@ -13,6 +13,9 @@ from google.cloud import vision
 
 
 app = Flask(__name__)
+
+
+@app.route('/')
 def homepage():
     # Create a Cloud Datastore client.
     datastore_client = datastore.Client()
