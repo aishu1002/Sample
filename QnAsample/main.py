@@ -10,11 +10,11 @@ from google.cloud import vision
 
 
 #CLOUD_STORAGE_BUCKET = os.environ.get('CLOUD_STORAGE_BUCKET')
+blockList=[]
+
 
 
 app = Flask(__name__)
-
-
 @app.route('/')
 def homepage():
     # Create a Cloud Datastore client.
@@ -26,7 +26,7 @@ def homepage():
     image_entities = list(query.fetch())
 
     # Return a Jinja2 HTML template and pass in image_entities as a parameter.
-    return render_template('homepage.html', image_entities=image_entities)
+    return render_template('homepage.html', image_entities=image_entities, length =len(blockList))
 
 
 @app.route('/upload_photo', methods=['GET', 'POST'])
@@ -35,6 +35,9 @@ def upload_photo():
 
    
     name = request.form['nm']
+    blockList.append(name)
+    blockList.append('answer1')
+    blockList.append('answer2')
     # Create a Cloud Datastore client.
     datastore_client = datastore.Client()
 
@@ -55,7 +58,10 @@ def upload_photo():
     entity = datastore.Entity(key)
     #entity['blob_name'] = blob.name
     #entity['image_public_url'] = blob.public_url
-    entity['question'] = name
+    #entity['question'] = name
+    for i in range(len(blockList)):
+        entity[i]=blockList[i]
+
     entity['timestamp'] = current_datetime
     #entity['joy'] = face_joy
 
