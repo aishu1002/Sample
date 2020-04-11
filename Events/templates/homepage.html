@@ -1,7 +1,6 @@
-<h1>Events page</h1>
+<h1>Events happening in SASTRA UNIVERSITY</h1>
 
-<p>This Python Flask application demonstrates App Engine Flexible, Google Cloud
-Storage, Datastore.</p>
+<p>Upload your poster and fill the details of your event below.</p>
 
 <br>
 
@@ -16,11 +15,20 @@ Storage, Datastore.</p>
       <input type="submit" name="submit" value="Submit">
     </form>
     {% for image_entity in image_entities %}
+      <p>Event poster:</p>
       <img src="{{image_entity['image_public_url']}}" width=200 height=200>
       <p>Event Name : {{image_entity['event_Name']}}.</p>
       <p>Venue:  {{image_entity['Venue']}}.</p>
       <p>Time : {{image_entity['timee']}}</p>
-      <p>uploaded time : {{image_entity['timestamp']}}.</p>   
+      <p>uploaded time : {{image_entity['timestamp']}}.</p>  
+       <hr> 
     {% endfor %}
+
+<iframe
+    allow="microphone;"
+    width="350"
+    height="430"
+    src="https://console.dialogflow.com/api-client/demo/embedded/090e521c-0b94-41e0-9f25-11c088326e95">
+</iframe>
   </body>
 </html> 
