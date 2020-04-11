@@ -1,0 +1,26 @@
+<h1>Events page</h1>
+
+<p>This Python Flask application demonstrates App Engine Flexible, Google Cloud
+Storage, Datastore.</p>
+
+<br>
+
+<html>
+  <body>
+    <form action="upload_photo" method="POST" enctype="multipart/form-data">
+      Upload Poster: <input type="file" name="file"><br>
+      Event Name: <input type = "text" name = "nm" /><br>
+      Venue: <input type = "text" name = "vn" /><br>
+      Time: <input type = "text" name = "tm" /><br>
+
+      <input type="submit" name="submit" value="Submit">
+    </form>
+    {% for image_entity in image_entities %}
+      <img src="{{image_entity['image_public_url']}}" width=200 height=200>
+      <p>Event Name : {{image_entity['event_Name']}}.</p>
+      <p>Venue:  {{image_entity['Venue']}}.</p>
+      <p>Time : {{image_entity['timee']}}</p>
+      <p>uploaded time : {{image_entity['timestamp']}}.</p>   
+    {% endfor %}
+  </body>
+</html> 
