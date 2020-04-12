@@ -13,9 +13,11 @@ CLOUD_STORAGE_BUCKET = os.environ.get('CLOUD_STORAGE_BUCKET')
 
 
 app = Flask(__name__)
-
-
 @app.route('/')
+def home()
+    return render_template('home.html')
+
+@app.route('/events')
 def homepage():
     # Create a Cloud Datastore client.
     datastore_client = datastore.Client()
@@ -91,7 +93,7 @@ def upload_photo():
     datastore_client.put(entity)
 
     # Redirect to the home page.
-    return redirect('/events')
+    return redirect('/')
 
 
 @app.errorhandler(500)
