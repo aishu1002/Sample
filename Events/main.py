@@ -93,7 +93,7 @@ def upload_photo():
     datastore_client.put(entity)
 
     # Redirect to the home page.
-    return redirect('/')
+    return redirect('/events')
 
 
 @app.errorhandler(500)
