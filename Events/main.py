@@ -14,7 +14,7 @@ CLOUD_STORAGE_BUCKET = os.environ.get('CLOUD_STORAGE_BUCKET')
 
 app = Flask(__name__)
 @app.route('/')
-def home()
+def home():
     return render_template('home.html')
 
 @app.route('/events')
