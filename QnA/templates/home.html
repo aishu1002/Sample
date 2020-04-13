@@ -14,7 +14,7 @@
       </form>
       {% for image_entity in image_entities %}
        
-      <li><a href='/questionpage/"+image_entity['timestamp']"'>{{image_entity['Question']}}</a></li>
+      <li><a href='/questionpage/"+{{image_entity['timestamp']}}"'>{{image_entity['Question']}}</a></li>
       {% endfor %}
    </body>
 </html>
