@@ -37,7 +37,7 @@ def questionpage(kinde):
     image_entities = list(query.fetch())
 
     # Return a Jinja2 HTML template and pass in image_entities as a parameter.
-    return render_template('question.html', image_entities=image_entities)
+    return render_template('question.html', image_entities=image_entities,kind=kinde)
 
 
 @app.route('/upload_photo', methods=['GET', 'POST'])
