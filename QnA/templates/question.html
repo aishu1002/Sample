@@ -13,6 +13,11 @@
 
       <input type="submit" name="submit" value="Submit">
     </form>
+    
+    {% for image_entity in image_entities %}
+       
+    <p>{{image_entity['quess']}} is the question</p>
+      {% endfor %}
 
       </body>
 </html> 
