@@ -33,7 +33,7 @@ def questionpage(kinde):
 
     # Use the Cloud Datastore client to fetch information from Datastore about
     # each photo.
-    query = datastore_client.query(kind='Ques')
+    query = datastore_client.query(kind=kinde)
     image_entities = list(query.fetch())
 
     # Return a Jinja2 HTML template and pass in image_entities as a parameter.
@@ -63,9 +63,19 @@ def upload_photo():
     entity['Question']=name
     # entity['joy'] = face_joy
     entity['kinde']=name
-
+    
     # Save the new entity to Datastore.
     datastore_client.put(entity)
+    
+    kind = times
+
+    # Create the Cloud Datastore key for the new entity.
+    key = datastore_client.key(kind, name)
+
+    entity = datastore.Entity(key)
+    entity['quess']=name
+     datastore_client.put(entity)
+    
 
    
 
