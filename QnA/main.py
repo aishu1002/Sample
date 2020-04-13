@@ -26,14 +26,14 @@ def homepage():
     return render_template('home.html', image_entities=image_entities)
 
 
-@app.route('/questionpage/<time>')
-def questionpage(time):
+@app.route('/questionpage/<kinde>')
+def questionpage(kinde):
     # Create a Cloud Datastore client.
     datastore_client = datastore.Client()
 
     # Use the Cloud Datastore client to fetch information from Datastore about
     # each photo.
-    query = datastore_client.query(kind='time')
+    query = datastore_client.query(kind='Ques')
     image_entities = list(query.fetch())
 
     # Return a Jinja2 HTML template and pass in image_entities as a parameter.
@@ -62,14 +62,12 @@ def upload_photo():
     entity['timestamp'] = times
     entity['Question']=name
     # entity['joy'] = face_joy
+    entity['kinde']=name
 
     # Save the new entity to Datastore.
     datastore_client.put(entity)
 
-    kind = times
-    key=datastore_client.key(kind,name)
-    entity = datastore.Entity(key)
-    entity['questions']= name
+   
 
     # Redirect to the home page.
     return redirect('/')
