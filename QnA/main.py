@@ -74,7 +74,7 @@ def upload_photo():
 
     entity = datastore.Entity(key)
     entity['quess']=name
-     datastore_client.put(entity)
+    datastore_client.put(entity)
     
 
    
