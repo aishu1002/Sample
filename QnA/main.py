@@ -59,10 +59,10 @@ def upload_answer(kinde):
     datastore_client.put(entity)
     
 
-    query = datastore_client.query(kind=timest)
+    query = datastore_client.query(kind=kinde)
     image_entities = list(query.fetch())
 
-    return render_template('question.html', image_entities=image_entities)
+    return render_template('question.html', image_entities=image_entities,kind=kinde)
 
 
        
