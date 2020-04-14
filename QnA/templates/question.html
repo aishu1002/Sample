@@ -1,22 +1,28 @@
-<h1>{{image_entities['Question']}}</h1>
+<h1>Question</h1>
 
-<hr> 
-<br>
 
 <html>
   <body>
-    <p>{{kind}}</p>
-       <form>
-      Event Name: <input type = "text" name = "nm" /><br>
-      Venue: <input type = "text" name = "vn" /><br>
-      Time: <input type = "text" name = "tm" /><br>
 
-      <input type="submit" name="submit" value="Submit">
-    </form>
+
+     {% for image_entity in image_entities %}
+       
+    <p>{{image_entity['quess']}} is the question</p>
+      {% endfor %}
+
+       <form action="upload_answer" method="POST" enctype="multipart/form-data">
+         <p>Enter Answer:</p>
+         <p><input type = "text" name = "nm" /></p>
+         <p><input type = "submit" value = "submit" /></p>
+      </form>
     
     {% for image_entity in image_entities %}
        
-    <p>{{image_entity['quess']}} is the question</p>
+    <p>{{image_entity['quess']}}</p>
+    <hr>
+    <br>
+
+
       {% endfor %}
 
       </body>

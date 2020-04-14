@@ -6,7 +6,9 @@ from flask import Flask, redirect, render_template, request
 
 from google.cloud import datastore
 
-
+timest = '0'
+n = 0
+a = 0
 # CLOUD_STORAGE_BUCKET = os.environ.get('CLOUD_STORAGE_BUCKET')
 
 app = Flask(__name__)
@@ -30,6 +32,7 @@ def homepage():
 def questionpage(kinde):
     # Create a Cloud Datastore client.
     datastore_client = datastore.Client()
+    timest=kinde
 
     # Use the Cloud Datastore client to fetch information from Datastore about
     # each photo.
@@ -38,6 +41,32 @@ def questionpage(kinde):
 
     # Return a Jinja2 HTML template and pass in image_entities as a parameter.
     return render_template('question.html', image_entities=image_entities,kind=kinde)
+
+@app.route('/upload_answer', methods=['GET', 'POST'])
+def upload_answer():  
+    answerr= request.form['nm']
+    datastore_client = datastore.Client()
+    #query = datastore_client.query(kind=kinde)
+    #image_entities = list(query.fetch())
+    #for image_entity in image_entities:
+    #   n=image_entity['answerNo']
+    #   image_entity['answerNo']=n+1 
+    kind=timest
+    entity['quess']=name
+
+     query = datastore_client.query(kind=timest)
+    image_entities = list(query.fetch())
+
+    return render_template('question.html', image_entities=image_entities)
+
+
+       
+      
+    
+    
+
+
+    
 
 
 @app.route('/upload_photo', methods=['GET', 'POST'])
@@ -67,6 +96,8 @@ def upload_photo():
     # Save the new entity to Datastore.
     datastore_client.put(entity)
     
+
+    #new kind
     kind = times
 
     # Create the Cloud Datastore key for the new entity.
