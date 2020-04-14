@@ -56,6 +56,7 @@ def upload_answer():
 
     entity = datastore.Entity(key)
     entity['quess']=answerr
+    datastore_client.put(entity)
     
 
     query = datastore_client.query(kind=timest)
