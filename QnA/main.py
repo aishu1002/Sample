@@ -42,8 +42,8 @@ def questionpage(kinde):
     # Return a Jinja2 HTML template and pass in image_entities as a parameter.
     return render_template('question.html', image_entities=image_entities,kind=kinde)
 
-@app.route('/questionpage/upload_answer', methods=['GET', 'POST'])
-def upload_answer():  
+@app.route('/questionpage/upload_answer<kinde>', methods=['GET', 'POST'])
+def upload_answer(kinde):  
     answerr= request.form['nm']
     datastore_client = datastore.Client()
     #query = datastore_client.query(kind=kinde)
@@ -51,7 +51,7 @@ def upload_answer():
     #for image_entity in image_entities:
     #   n=image_entity['answerNo']
     #   image_entity['answerNo']=n+1 
-    kind=timest
+    kind=kinde
     key = datastore_client.key(kind, answerr)
 
     entity = datastore.Entity(key)
