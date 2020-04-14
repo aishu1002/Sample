@@ -34,13 +34,17 @@ def questionpage(kinde):
     datastore_client = datastore.Client()
     timest=kinde
 
+
     # Use the Cloud Datastore client to fetch information from Datastore about
     # each photo.
     query = datastore_client.query(kind=kinde)
     image_entities = list(query.fetch())
+    query = datastore_client.query(kind=kinde+kinde)
+    answer_entities = list(query.fetch())
+
 
     # Return a Jinja2 HTML template and pass in image_entities as a parameter.
-    return render_template('question.html', image_entities=image_entities,kind=kinde)
+    return render_template('question.html',answer_entities=answer_entities, image_entities=image_entities,kind=kinde)
 
 @app.route('/questionpage/upload_answer<kinde>', methods=['GET', 'POST'])
 def upload_answer(kinde):  
