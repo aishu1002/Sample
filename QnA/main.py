@@ -42,7 +42,7 @@ def questionpage(kinde):
     # Return a Jinja2 HTML template and pass in image_entities as a parameter.
     return render_template('question.html', image_entities=image_entities,kind=kinde)
 
-@app.route('/upload_answer', methods=['GET', 'POST'])
+@app.route('/upload_answer', methods=['POST'])
 def upload_answer():  
     answerr= request.form['nm']
     datastore_client = datastore.Client()
