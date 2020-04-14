@@ -51,7 +51,7 @@ def upload_answer(kinde):
     #for image_entity in image_entities:
     #   n=image_entity['answerNo']
     #   image_entity['answerNo']=n+1 
-    kind=kinde
+    kind=kinde+kinde
     key = datastore_client.key(kind, answerr)
 
     entity = datastore.Entity(key)
@@ -59,10 +59,13 @@ def upload_answer(kinde):
     datastore_client.put(entity)
     
 
+    query = datastore_client.query(kind=kinde+kinde)
+    answer_entities = list(query.fetch())
+
     query = datastore_client.query(kind=kinde)
     image_entities = list(query.fetch())
 
-    return render_template('question.html', image_entities=image_entities,kind=kinde)
+    return render_template('question.html', answer_entities=answer_entities,image_entities=image_entities,kind=kinde)
 
 
        

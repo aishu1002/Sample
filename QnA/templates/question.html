@@ -1,14 +1,15 @@
-<h1>Question</h1>
+
+  {% for image_entity in image_entities %}
+       
+  <h1>{{image_entity['quess']}}</h1>
+  {% endfor %}
+
+
+
 
 
 <html>
   <body>
-
-
-     {% for image_entity in image_entities %}
-       
-    <p>{{image_entity['quess']}} is the question</p>
-      {% endfor %}
 
        <form action="upload_answer{{kind}}" method="POST" enctype="multipart/form-data">
          <p>Enter Answer:</p>
@@ -16,9 +17,9 @@
          <p><input type = "submit" value = "submit" /></p>
       </form>
     
-    {% for image_entity in image_entities %}
+    {% for answer_entity in answer_entities %}
        
-    <p>{{image_entity['quess']}}</p>
+    <p>{{answer_entity['quess']}}</p>
     <hr>
     <br>
 
